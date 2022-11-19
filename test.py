@@ -8,8 +8,6 @@ from telegram.ext.callbackcontext import CallbackContext
 from telegram.ext.callbackqueryhandler import CallbackQueryHandler
 from telegram.ext.commandhandler import CommandHandler
 from telegram.ext.dispatcher import Dispatcher
-from telegram.ext.filters import Filters
-from telegram.ext.messagehandler import MessageHandler
 from telegram.ext.updater import Updater
 from telegram.parsemode import ParseMode
 from telegram.update import Update
@@ -28,8 +26,8 @@ app = Flask(__name__)
 
 def start(update: Update, context: CallbackContext):
     keyboard = [[
-        InlineKeyboardButton("10037097", callback_data='10037097'),
-        InlineKeyboardButton("10037098", callback_data='10037098')
+        InlineKeyboardButton("10037097 - Diego", callback_data='10037097'),
+        InlineKeyboardButton("10053624 - Sam", callback_data='10053624')
     ]]
     kbd_layout = [['#10037097', '#10037098'], ['#10037097', '#10037097']]
     kbd = InlineKeyboardMarkup(keyboard)
@@ -87,17 +85,17 @@ def button(update, context):
 def main():
     data = request.json
 
-    # print(data)  # Comment to hide what Telegram is sending you
-    # chat_id = data['message']['chat']['id']
-    # message = data['message']['text']
+    print(data)  # Comment to hide what Telegram is sending you
+    chat_id = data['message']['chat']['id']
+    message = data['message']['text']
 
-    # json_data = {
-    #     "chat_id": chat_id,
-    #     "text": message,
-    # }
+    json_data = {
+        "chat_id": chat_id,
+        "text": message,
+    }
 
-    # message_url = BOT_URL + 'sendMessage'
-    # requests.post(message_url, json=json_data)
+    message_url = BOT_URL + 'sendMessage'
+    requests.post(message_url, json=json_data)
 
     updater.dispatcher.add_handler(CommandHandler("start", start))
     updater.dispatcher.add_handler(CommandHandler("remove", remove))
