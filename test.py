@@ -2,8 +2,7 @@ import os
 
 import requests
 from flask import Flask, request
-from telegram import (CallbackQuery, InlineKeyboardButton,
-                      InlineKeyboardMarkup, ReplyKeyboardRemove)
+from telegram import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardRemove
 from telegram.bot import Bot
 from telegram.ext.callbackcontext import CallbackContext
 from telegram.ext.callbackqueryhandler import CallbackQueryHandler
