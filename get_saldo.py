@@ -19,8 +19,8 @@ dispatcher: Dispatcher = updater.dispatcher
 
 def start(update: Update, context: CallbackContext):
     keyboard = [[
-        InlineKeyboardButton("10037097", callback_data='10037097'),
-        InlineKeyboardButton("10037098", callback_data='10037098')
+        InlineKeyboardButton("10037097 - Diego", callback_data='10037097'),
+        InlineKeyboardButton("10053624 - Sam", callback_data='10053624')
     ]]
     kbd_layout = [['#10037097', '#10037098'], ['#10037097', '#10037097']]
     kbd = InlineKeyboardMarkup(keyboard)
