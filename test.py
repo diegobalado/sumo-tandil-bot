@@ -3,6 +3,7 @@ import os
 import requests
 from flask import Flask, request
 
+os.environ["BOT_KEY"] = '5748811715:AAH9EIiQGBpK85wc4sEaZZlbfbHd5ZEOxq0'
 BOT_URL = f'https://api.telegram.org/bot{os.environ["BOT_KEY"]}/'
 # <-- add your telegram token as environment variable
 
@@ -10,21 +11,21 @@ BOT_URL = f'https://api.telegram.org/bot{os.environ["BOT_KEY"]}/'
 app = Flask(__name__)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET', 'POST'])
 def main():  
-    data = request.json
+    data = request
 
     print(data)  # Comment to hide what Telegram is sending you
-    chat_id = data['message']['chat']['id']
-    message = data['message']['text']
+    # chat_id = data['message']['chat']['id']
+    # message = data['message']['text']
 
-    json_data = {
-        "chat_id": chat_id,
-        "text": message,
-    }
+    # json_data = {
+    #     "chat_id": chat_id,
+    #     "text": message,
+    # }
 
     message_url = BOT_URL + 'sendMessage'
-    requests.post(message_url, json=json_data)
+    # requests.post(message_url, json={"key": "value"})
 
     return ''
 
