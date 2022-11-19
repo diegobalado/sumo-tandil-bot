@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def main():  
-    data = request.content_type
+    data = request.method
 
     print(data)  # Comment to hide what Telegram is sending you
     # chat_id = data['message']['chat']['id']
@@ -24,8 +24,8 @@ def main():
     #     "text": message,
     # }
 
-    message_url = BOT_URL + 'sendMessage'
-    requests.post(message_url, data='{"key": "value"}')
+    # message_url = BOT_URL + 'sendMessage'
+    # requests.post(message_url, json={"json_data": "value"})
 
     return ''
 
